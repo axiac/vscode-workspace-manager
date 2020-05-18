@@ -204,16 +204,6 @@
                     "markdownDescription": "Specifies where to show the _Groups_ view",
                     "scope": "window"
                 },
-                "workspace-manager.advanced.codeExecutable": {
-                    "type": "string",
-                    "default": "code",
-                    "description": "Path to the executable file for VS Code."
-                },
-                "workspace-manager.advanced.codeInsidersExecutable": {
-                    "type": "string",
-                    "default": "code-insiders",
-                    "description": "Path to the executable file for VS Code Insiders."
-                },
                 "workspace-manager.advanced.deep": {
                     "type": "number",
                     "default": "5",

@@ -1,7 +1,5 @@
-import { exec } from 'child_process';
+import * as vscode from 'vscode';
 import { IWorkspaceCommandArgs } from '../../model/workspace';
-import { getApp } from '../../util/getApp';
-import { onCommandRun } from '../../util/onCommandRun';
 import { AbstractCommand, CommandContext } from '../abstractCommand';
 import { Command, Commands } from '../common';
 
@@ -14,11 +12,7 @@ export class SwitchToWorkspaceCommand extends AbstractCommand {
     async execute(context?: CommandContext, args: IWorkspaceCommandArgs = {}) {
         args = { ...args };
 
-        const app = getApp();
-        const command = `${app} ${args.inNewWindow ? '-n' : '-r'} "${
-            args.workspace!.path
-        }"`;
-
-        exec(command, onCommandRun);
+        let uri = vscode.Uri.file(args.workspace!.path);
+        await vscode.commands.executeCommand('vscode.openFolder', uri, args.inNewWindow);
     }
 }
